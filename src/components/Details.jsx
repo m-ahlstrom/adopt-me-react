@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Carousel from "./Carousel";
-import fetchPet from "./fetchPet";
-import ErrorBoundary from "./ErrorBoundary";
+import fetchPet from "../services/fetchPet";
+import ErrorBoundary from "../utils/ErrorBoundary";
 import Modal from "./Modal";
-import AdoptedPetContext from "./AdoptedPetContext";
+import AdoptedPetContext from "../contexts/AdoptedPetContext";
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
