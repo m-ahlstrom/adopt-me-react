@@ -20,9 +20,9 @@ const SearchParams = () => {
   const pets = results?.data?.pets ?? []
 
   return (
-    <div className="mx-auto my-0 grid w-11/12 grid-cols-1 lg:grid-cols-2">
+    <div className="mx-auto my-0 grid w-11/12 grid-cols-1 lg:grid-cols-3">
       <form
-        className="m-10 flex h-auto flex-col items-center justify-center rounded-lg bg-background-color p-10 shadow-lg"
+        className="m-10 flex h-auto flex-col items-center justify-center rounded-lg bg-background-color p-10 shadow-lg lg:col-span-1"
         onSubmit={(e) => {
           e.preventDefault()
           const formData = new FormData(e.target)
@@ -35,7 +35,7 @@ const SearchParams = () => {
         }}
       >
         {adoptedPet ? (
-          <div className="pet image-container">
+          <div className="block w-32 h-32 float-left [clip-path:circle(50%)] mx-5 mb-5">
             <img src={adoptedPet.images[0]} alt={adoptedPet.name} />
           </div>
         ) : null}
@@ -43,7 +43,7 @@ const SearchParams = () => {
           Location
           <input
             type="text"
-            className="mb-5 block w-60 md:w-80"
+            className="mb-8 block w-60 text-lg md:w-80"
             name="location"
             id="location"
             placeholder="Location"
@@ -55,7 +55,7 @@ const SearchParams = () => {
           <select
             id="animal"
             name="animal"
-            className="mb-5 block w-60 md:w-80"
+            className="mb-8 block w-60 text-lg md:w-80"
             value={animal}
             onChange={(e) => {
               setAnimal(e.target.value)
@@ -74,7 +74,7 @@ const SearchParams = () => {
           Breed
           <select
             disabled={!breeds.length}
-            className="mb-5 block w-60 md:w-80"
+            className="mb-8 block w-60 text-lg md:w-80"
             id="breed"
             name="breed"
           >

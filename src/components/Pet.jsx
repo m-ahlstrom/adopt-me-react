@@ -9,13 +9,13 @@ const Pet = (props) => {
   }
 
   return (
-    <Link to={`/details/${id}`} className="pet">
-      <div className="image-container">
-        <img src={hero} alt={name} />
+    <Link to={`/details/${id}`} className="w-full h-28 block mx-0 overflow-hidden border-b-2 border-solid">
+      <div className="w-24 h-24 float-left [clip-path:circle(50%)] mx-5">
+        <img src={hero} className="w-24" alt={name} />
       </div>
-      <div className="info">
-        <h1>{name}</h1>
-        <h2>{`${animal} — ${breed} — ${location}`}</h2>
+      <div className="w-4/5 flex-col justify-around">
+        <h1 className='font-normal text-2xl text-ellipsis whitespace-nowrap'>{name}</h1>
+        <h2 className='whitespace-nowrap font-normal overflow-ellipsis hover:whitespace-normal'>{`${animal} — ${breed} — ${location}`}</h2>
       </div>
     </Link>
   )
