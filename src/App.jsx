@@ -6,6 +6,7 @@ import SearchParams from './components/SearchParams'
 import Details from './components/Details'
 import AdoptedPetContext from './contexts/AdoptedPetContext'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/" element={<SearchParams />} />
           </Routes>
         </AdoptedPetContext.Provider>
+        <Footer />
       </QueryClientProvider>
     </BrowserRouter>
   )

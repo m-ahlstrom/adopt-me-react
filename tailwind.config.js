@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "background-color": "#faeff0",
+        "button-color": "#ad343e",
       },
     },
     plugins: [require('@tailwindcss/forms')],
