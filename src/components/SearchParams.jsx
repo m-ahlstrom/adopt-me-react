@@ -20,7 +20,7 @@ const SearchParams = () => {
   const pets = results?.data?.pets ?? []
 
   return (
-    <div className="mx-auto my-0 grid w-11/12 grid-cols-1 md:grid-cols-2">
+    <div className="mx-auto my-0 grid w-11/12 grid-cols-1 lg:grid-cols-2">
       <form
         className="m-10 flex h-auto flex-col items-center justify-center rounded-lg bg-background-color p-10 shadow-lg"
         onSubmit={(e) => {
