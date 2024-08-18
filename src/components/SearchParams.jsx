@@ -35,7 +35,7 @@ const SearchParams = () => {
         }}
       >
         {adoptedPet ? (
-          <div className="block w-32 h-32 float-left [clip-path:circle(50%)] mx-5 mb-5">
+          <div className="float-left mx-5 mb-5 block h-32 w-32 [clip-path:circle(50%)]">
             <img src={adoptedPet.images[0]} alt={adoptedPet.name} />
           </div>
         ) : null}

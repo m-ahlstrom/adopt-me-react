@@ -17,8 +17,8 @@ const Details = () => {
 
   if (results.isLoading) {
     return (
-      <div className="items-center content-center justify-center flex p-4 my-10">
-        <h2 className="text-8xl animate-spin">🌀</h2>
+      <div className="my-10 flex content-center items-center justify-center p-4">
+        <h2 className="animate-spin text-8xl">🌀</h2>
       </div>
     )
   }
@@ -26,13 +26,15 @@ const Details = () => {
   const pet = results.data.pets[0]
 
   return (
-    <div className="w-11/12 bg-background-color shadow-lg my-6 rounded mx-auto p-10">
+    <div className="my-6 mx-auto w-11/12 rounded bg-background-color p-10 shadow-lg">
       <Carousel images={pet.images} />
       <div>
-        <h1 className='text-center text-6xl mt-5'>{pet.name}</h1>
-        <h2 className='text-center mt-1 my-5'>{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
-        <button className='mb-5' onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
-        <p className='px-4'>{pet.description}</p>
+        <h1 className="mt-5 text-center text-6xl">{pet.name}</h1>
+        <h2 className="my-5 mt-1 text-center">{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
+        <button className="mb-5" onClick={() => setShowModal(true)}>
+          Adopt {pet.name}
+        </button>
+        <p className="px-4">{pet.description}</p>
         {showModal ? (
           <Modal>
             <div>

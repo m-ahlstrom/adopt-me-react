@@ -9,13 +9,18 @@ const Pet = (props) => {
   }
 
   return (
-    <Link to={`/details/${id}`} className="w-full h-28 block mx-0 overflow-hidden border-b-2 border-solid">
-      <div className="w-24 h-24 float-left [clip-path:circle(50%)] mx-5">
+    <Link
+      to={`/details/${id}`}
+      className="mx-0 block h-28 w-full overflow-hidden border-b-2 border-solid"
+    >
+      <div className="float-left mx-5 h-24 w-24 [clip-path:circle(50%)]">
         <img src={hero} className="w-24" alt={name} />
       </div>
       <div className="w-4/5 flex-col justify-around">
-        <h1 className='font-normal text-2xl text-ellipsis whitespace-nowrap'>{name}</h1>
-        <h2 className='whitespace-nowrap font-normal overflow-ellipsis hover:whitespace-normal'>{`${animal} — ${breed} — ${location}`}</h2>
+        <h1 className="text-ellipsis whitespace-nowrap text-2xl font-normal">
+          {name}
+        </h1>
+        <h2 className="overflow-ellipsis whitespace-nowrap font-normal hover:whitespace-normal">{`${animal} — ${breed} — ${location}`}</h2>
       </div>
     </Link>
   )
