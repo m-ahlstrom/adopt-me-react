@@ -12,6 +12,7 @@ The code in this project is based on [The Complete Intro to React](https://front
 - **✓** Migration to Tailwind CSS: **Done**
 - X Migration to the Petfinder API: Not Complete
 - X Migration to TypeScript: Not Complete
+- X Setting up Redux: Not Complete
 - X Test Coverage: 0%
 
 ## How to use
