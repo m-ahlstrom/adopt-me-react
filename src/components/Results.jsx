@@ -15,7 +15,7 @@ const Results = ({ pets }) => {
   }, [pageSize, currentPage, data])
 
   return (
-    <div className="m-10 grid grid-cols-1 rounded-lg bg-background-color dark:bg-zinc-700 dark:text-white p-10 shadow-lg lg:col-span-2">
+    <div className="m-10 grid grid-cols-1 rounded-lg bg-background-color p-10 shadow-lg dark:bg-zinc-700 dark:text-white lg:col-span-2">
       <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         {!pets.length ? (
           <h1>No Pets Found</h1>

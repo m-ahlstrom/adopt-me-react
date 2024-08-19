@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import DarkModeContext from './DarkModeContext'
 
 const DarkModeContextWrapper = ({ children }) => {
@@ -14,7 +14,11 @@ const DarkModeContextWrapper = ({ children }) => {
     else document.body.classList.add('dark')
   }, [mode])
 
-  return <DarkModeContext.Provider value={{ currentMode: mode, changeCurrentMode }}>{children}</DarkModeContext.Provider>
+  return (
+    <DarkModeContext.Provider value={{ currentMode: mode, changeCurrentMode }}>
+      {children}
+    </DarkModeContext.Provider>
+  )
 }
 
 export default DarkModeContextWrapper

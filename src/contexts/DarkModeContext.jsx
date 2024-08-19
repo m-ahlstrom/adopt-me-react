@@ -2,7 +2,7 @@ import { createContext } from 'react'
 
 const defaultValue = {
   currentMode: 'light',
-  changeCurrentMode : (newMode = 'light' | 'dark') => {},
+  changeCurrentMode: (newMode = 'light' | 'dark') => {},
 }
 
 const DarkModeContext = createContext(defaultValue)
