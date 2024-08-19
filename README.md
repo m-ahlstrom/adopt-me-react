@@ -1,6 +1,6 @@
 # Adopt Me - Pet Adoption Site with React
 
-A pet adoption site written in React. Search for pets waiting to be adopted. Get detailed information on them before you make your choice. All pets are coming from the Petfinder API. Technologies used: Vite, React, Tailwind CSS, TypeScript, Vitest.
+A pet adoption site written in React. Search for pets waiting to be adopted. Get detailed information on them before you make your choice. All pets are coming from the Petfinder API. Technologies used: **Vite**, **React**, **Tailwind CSS**, **TypeScript**, **Vitest**.
 
 The code in this project is based on [The Complete Intro to React](https://frontendmasters.com/courses/complete-react-v8/) and [Intermediate React](https://frontendmasters.com/courses/intermediate-react-v5/) courses by Brian Holt from [Frontend Masters](https://www.frontendmasters.com).
 
