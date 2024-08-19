@@ -29,7 +29,7 @@ const Details = () => {
     <div className="my-6 mx-auto w-11/12 rounded bg-background-color p-10 shadow-lg">
       <Carousel images={pet.images} />
       <div>
-        <h1 className="mt-5 text-center text-6xl">{pet.name}</h1>
+        <h1 className="my-5 text-center text-6xl">{pet.name}</h1>
         <h2 className="my-5 mt-1 text-center">{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
         <center>
           <button className="mx-auto mb-5" onClick={() => setShowModal(true)}>
