@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import DarkModeContextWrapper from './contexts/DarkModeContextWrapper'
 import SearchParams from './components/SearchParams'
 import Details from './components/Details'
 import AdoptedPetContext from './contexts/AdoptedPetContext'
@@ -20,6 +21,7 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptedPet = useState(null)
   return (
+    <DarkModeContextWrapper>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <AdoptedPetContext.Provider value={adoptedPet}>
@@ -32,6 +34,7 @@ const App = () => {
         <Footer />
       </QueryClientProvider>
     </BrowserRouter>
+    </DarkModeContextWrapper>
   )
 }
 

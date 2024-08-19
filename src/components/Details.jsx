@@ -26,7 +26,7 @@ const Details = () => {
   const pet = results.data.pets[0]
 
   return (
-    <div className="my-6 mx-auto w-11/12 rounded bg-background-color p-10 shadow-lg">
+    <div className="my-6 mx-auto w-11/12 rounded bg-background-color dark:bg-zinc-700 dark:text-white p-10 shadow-lg">
       <Carousel images={pet.images} />
       <div>
         <h1 className="my-5 text-center text-6xl">{pet.name}</h1>
@@ -39,7 +39,7 @@ const Details = () => {
         <p className="px-4">{pet.description}</p>
         {showModal ? (
           <Modal>
-            <div className="max-w-lg rounded bg-white p-4 text-center">
+            <div className="max-w-lg rounded bg-white dark:bg-black p-4 text-center">
               <h1 className="mb-4">Would you like to adopt {pet.name}?</h1>
               <div className="buttons">
                 <button
