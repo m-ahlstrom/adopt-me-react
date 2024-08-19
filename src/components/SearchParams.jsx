@@ -1,4 +1,10 @@
-import { useState, useContext } from 'react'
+import {
+  useState,
+  useContext,
+  useDeferredValue,
+  useMemo,
+  useTransition,
+} from 'react'
 import { useQuery } from '@tanstack/react-query'
 import useBreedList from '../hooks/useBreedList'
 import Results from './Results'
@@ -15,9 +21,15 @@ const SearchParams = () => {
   const [animal, setAnimal] = useState('')
   const [breeds] = useBreedList(animal)
   const [adoptedPet] = useContext(AdoptedPetContext)
+  const [isPending, startTransition] = useTransition()
 
   const results = useQuery(['search', requestParams], fetchSearch)
   const pets = results?.data?.pets ?? []
+  const deferredPets = useDeferredValue(pets)
+  const renderedPets = useMemo(
+    () => <Results pets={deferredPets} />,
+    [deferredPets],
+  )
 
   return (
     <div className="mx-auto my-0 grid w-11/12 grid-cols-1 lg:grid-cols-3">
@@ -31,7 +43,9 @@ const SearchParams = () => {
             breed: formData.get('breed') ?? '',
             location: formData.get('location') ?? '',
           }
-          setRequestParams(obj)
+          startTransition(() => {
+            setRequestParams(obj)
+          })
         }}
       >
         {adoptedPet ? (
@@ -87,9 +101,15 @@ const SearchParams = () => {
           </select>
         </label>
 
-        <button>Submit</button>
+        {isPending ? (
+          <div className="my-10 flex content-center items-center justify-center p-4">
+            <h2 className="animate-spin text-8xl">🌀</h2>
+          </div>
+        ) : (
+          <button>Submit</button>
+        )}
       </form>
-      <Results pets={pets} />
+      {renderedPets}
     </div>
   )
 }
