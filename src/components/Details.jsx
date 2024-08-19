@@ -32,18 +32,18 @@ const Details = () => {
         <h1 className="mt-5 text-center text-6xl">{pet.name}</h1>
         <h2 className="my-5 mt-1 text-center">{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
         <center>
-        <button className="mb-5 mx-auto" onClick={() => setShowModal(true)}>
-          Adopt {pet.name}
-        </button>
+          <button className="mx-auto mb-5" onClick={() => setShowModal(true)}>
+            Adopt {pet.name}
+          </button>
         </center>
         <p className="px-4">{pet.description}</p>
         {showModal ? (
           <Modal>
-            <div className="bg-white text-center max-w-lg p-4 rounded">
-              <h1 className='mb-4'>Would you like to adopt {pet.name}?</h1>
+            <div className="max-w-lg rounded bg-white p-4 text-center">
+              <h1 className="mb-4">Would you like to adopt {pet.name}?</h1>
               <div className="buttons">
                 <button
-                  className='inline-block mr-4'
+                  className="mr-4 inline-block"
                   onClick={() => {
                     setAdoptedPet(pet)
                     navigate('/')
@@ -51,7 +51,12 @@ const Details = () => {
                 >
                   Yes
                 </button>
-                <button className='inline-block mr-4' onClick={() => setShowModal(false)}>No</button>
+                <button
+                  className="mr-4 inline-block"
+                  onClick={() => setShowModal(false)}
+                >
+                  No
+                </button>
               </div>
             </div>
           </Modal>

@@ -14,7 +14,12 @@ const Modal = ({ children }) => {
     return () => modalRoot.removeChild(elRef.current)
   }, [])
 
-  return createPortal(<div className="bg-background-color bg-opacity-75 fixed left-0 right-0 bottom-0 top-0 z-10 flex justify-center items-center">{children}</div>, elRef.current)
+  return createPortal(
+    <div className="fixed left-0 right-0 bottom-0 top-0 z-10 flex items-center justify-center bg-background-color bg-opacity-75">
+      {children}
+    </div>,
+    elRef.current,
+  )
 }
 
 export default Modal
