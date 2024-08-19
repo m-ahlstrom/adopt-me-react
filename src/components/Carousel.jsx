@@ -21,7 +21,7 @@ class Carousel extends Component {
     return (
       <div className="mt-2 flex h-96 items-center justify-around">
         <img
-          className="max-h-96 max-w-[45%]"
+          className="max-h-80 max-w-[45%] lg:max-h-96"
           src={images[active]}
           alt="animal hero"
         />
@@ -35,8 +35,8 @@ class Carousel extends Component {
               src={photo}
               className={
                 index === active
-                  ? 'm-4 inline-block h-24 w-24 cursor-pointer rounded-[50%] border-2 border-solid opacity-60'
-                  : 'm-4 inline-block h-24 w-24 cursor-pointer rounded-[50%] border-2 border-solid'
+                  ? 'm-4 inline-block h-16 w-16 cursor-pointer rounded-[50%] border-2 border-solid opacity-60 lg:h-24 lg:w-24'
+                  : 'm-4 inline-block h-16 w-16 cursor-pointer rounded-[50%] border-2 border-solid lg:h-24 lg:w-24'
               }
               alt="animal thumbnail"
             />

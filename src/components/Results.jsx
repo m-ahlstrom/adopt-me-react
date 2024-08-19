@@ -3,7 +3,7 @@ import Pet from './Pet'
 import Pagination from './Pagination'
 
 const Results = ({ pets }) => {
-  let pageSize = 5
+  let pageSize = 6
   let data = pets
 
   const [currentPage, setCurrentPage] = useState(1)

@@ -52,8 +52,9 @@ const Pagination = (props) => {
         return (
           <button
             key={pageNumber}
-            className="mr-4"
+            className="mr-4 disabled:opacity-50"
             selected={pageNumber === currentPage}
+            disabled={pageNumber === currentPage}
             onClick={() => onPageChange(pageNumber)}
           >
             {pageNumber}

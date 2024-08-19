@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import imgUrl from '../assets/images/image-logo.png'
 
 const Navbar = () => {
   return (
@@ -8,7 +9,7 @@ const Navbar = () => {
           <img
             className="w-2/3"
             alt="Adopt Me Pet Adoption Site Logo"
-            src="../assets/images/image-logo.png"
+            src={imgUrl}
           />
         </Link>
       </nav>

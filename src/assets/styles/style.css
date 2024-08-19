@@ -4,7 +4,7 @@
 
 @layer base {
   button {
-    @apply bg-transparent hover:bg-button-color text-button-color font-semibold hover:text-background-color py-2 px-4 border border-button-color hover:border-transparent rounded;
+    @apply bg-transparent hover:bg-button-color text-button-color font-semibold hover:text-background-color py-2 px-4 border border-button-color hover:border-transparent rounded disabled:hover:text-button-color disabled:hover:border-button-color disabled:hover:bg-transparent;
   }
 
 }
