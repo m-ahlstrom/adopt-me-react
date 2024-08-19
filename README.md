@@ -6,13 +6,13 @@ The code in this project is based on [The Complete Intro to React](https://front
 
 ## Features (or todo list for now)
 
-1. Navbar: **Done**
-2. Light/Dark Mode: Unimplemented
-3. Pagination: Unimplemented
-4. Migration to the Petfinder API: Not Complete
-5. Migration to TypeScript: Not Complete
-6. Migration to Tailwind CSS: Not Complete
-7. Test Coverage: 0%
+**✓** Navbar: **Done**
+X Light/Dark Mode: Unimplemented
+**✓** Pagination: **Done**
+**✓** Migration to Tailwind CSS: **Done**
+X Migration to the Petfinder API: Not Complete
+X Migration to TypeScript: Not Complete
+X Test Coverage: 0%
 
 ## How to use
 
