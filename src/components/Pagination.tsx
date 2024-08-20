@@ -75,8 +75,6 @@ const Pagination = (props: Iprops) => {
             </button>
           )
         }
-
-        
       })}
       <button
         disabled={currentPage === lastPage}
