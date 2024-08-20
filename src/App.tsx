@@ -6,6 +6,7 @@ import DarkModeContextWrapper from './contexts/DarkModeContextWrapper'
 import AdoptedPetContext from './contexts/AdoptedPetContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import { Pet } from './APIResponseTypes'
 
 const Details = lazy(() => import('./components/Details'))
 const SearchParams = lazy(() => import('./components/SearchParams'))
@@ -20,7 +21,7 @@ const queryClient = new QueryClient({
 })
 
 const App = () => {
-  const adoptedPet = useState(null)
+  const adoptedPet = useState(null as Pet | null)
   return (
     <DarkModeContextWrapper>
       <BrowserRouter>
@@ -69,5 +70,10 @@ const App = () => {
 // };
 
 const container = document.querySelector('#root')
+
+if (!container) {
+  throw new Error('No container to render.')
+}
+
 const root = createRoot(container)
 root.render(<App />)

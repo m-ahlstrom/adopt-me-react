@@ -10,21 +10,23 @@ import useBreedList from '../hooks/useBreedList'
 import Results from './Results'
 import fetchSearch from '../utils/fetchSearch'
 import AdoptedPetContext from '../contexts/AdoptedPetContext'
-const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile']
+import { Animal } from '../APIResponseTypes'
+const ANIMALS: Animal[] = ['bird', 'cat', 'dog', 'rabbit', 'reptile']
 
 const SearchParams = () => {
   const [requestParams, setRequestParams] = useState({
     location: '',
-    animal: '',
+    animal: '' as Animal,
     breed: '',
   })
-  const [animal, setAnimal] = useState('')
+  const [animal, setAnimal] = useState('' as Animal)
   const [breeds] = useBreedList(animal)
   const [adoptedPet] = useContext(AdoptedPetContext)
   const [isPending, startTransition] = useTransition()
 
   const results = useQuery(['search', requestParams], fetchSearch)
   const pets = results?.data?.pets ?? []
+
   const deferredPets = useDeferredValue(pets)
   const renderedPets = useMemo(
     () => <Results pets={deferredPets} />,
@@ -37,11 +39,12 @@ const SearchParams = () => {
         className="m-10 flex h-auto flex-col items-center justify-center rounded-lg bg-background-color p-10 shadow-lg dark:bg-zinc-700 dark:text-white lg:col-span-1"
         onSubmit={(e) => {
           e.preventDefault()
-          const formData = new FormData(e.target)
+          const formData = new FormData(e.currentTarget)
           const obj = {
-            animal: formData.get('animal') ?? '',
-            breed: formData.get('breed') ?? '',
-            location: formData.get('location') ?? '',
+            animal:
+              (formData.get('animal')?.toString() as Animal) ?? ('' as Animal),
+            breed: formData.get('breed')?.toString() ?? '',
+            location: formData.get('location')?.toString() ?? '',
           }
           startTransition(() => {
             setRequestParams(obj)
@@ -72,7 +75,7 @@ const SearchParams = () => {
             className="mb-8 block w-60 text-lg dark:text-black md:w-80"
             value={animal}
             onChange={(e) => {
-              setAnimal(e.target.value)
+              setAnimal(e.target.value as Animal)
             }}
           >
             <option />

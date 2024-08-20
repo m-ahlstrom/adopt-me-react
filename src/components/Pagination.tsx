@@ -1,7 +1,17 @@
 import React from 'react'
 import { usePagination, DOTS } from '../hooks/usePagination'
 
-const Pagination = (props) => {
+type OnPageChangeFunction = (args: number) => void
+
+interface Iprops {
+  onPageChange: OnPageChangeFunction
+  totalCount: number
+  siblingCount?: number
+  currentPage: number
+  pageSize: number
+}
+
+const Pagination = (props: Iprops) => {
   const {
     onPageChange,
     totalCount,
@@ -17,6 +27,10 @@ const Pagination = (props) => {
     pageSize,
   })
 
+  if (!paginationRange) {
+    return null
+  }
+
   if (currentPage === 0 || paginationRange.length < 2) {
     return null
   }
@@ -29,10 +43,9 @@ const Pagination = (props) => {
     onPageChange(currentPage - 1)
   }
 
-  let lastPage = paginationRange[paginationRange.length - 1]
+  const lastPage = paginationRange[paginationRange.length - 1]
   return (
     <div>
-      {console.log(paginationRange)}
       <button
         disabled={currentPage === 1}
         className="mr-4 disabled:opacity-50"
@@ -40,7 +53,7 @@ const Pagination = (props) => {
       >
         &lt;--
       </button>
-      {paginationRange.map((pageNumber) => {
+      {paginationRange.map((pageNumber: number | string) => {
         if (pageNumber === DOTS) {
           return (
             <button key={pageNumber} className="mr-4">
@@ -49,17 +62,21 @@ const Pagination = (props) => {
           )
         }
 
-        return (
-          <button
-            key={pageNumber}
-            className="mr-4 disabled:opacity-50"
-            selected={pageNumber === currentPage}
-            disabled={pageNumber === currentPage}
-            onClick={() => onPageChange(pageNumber)}
-          >
-            {pageNumber}
-          </button>
-        )
+        if (typeof pageNumber === 'number') {
+          return (
+            <button
+              key={pageNumber}
+              className="mr-4 disabled:opacity-50"
+              data-selected={pageNumber === currentPage}
+              disabled={pageNumber === currentPage}
+              onClick={() => onPageChange(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          )
+        }
+
+        
       })}
       <button
         disabled={currentPage === lastPage}

@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react'
 import Pet from './Pet'
+import { Pet as IPet } from '../APIResponseTypes'
 import Pagination from './Pagination'
 
-const Results = ({ pets }) => {
-  let pageSize = 6
-  let data = pets
+const Results = ({ pets }: { pets: IPet[] }) => {
+  const pageSize = 6
+  const data = pets
 
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -36,11 +37,10 @@ const Results = ({ pets }) => {
         )}
       </div>
       <Pagination
-        className="pagination-bar"
         currentPage={currentPage}
         totalCount={data.length}
         pageSize={pageSize}
-        onPageChange={(page) => setCurrentPage(page)}
+        onPageChange={(page: number) => setCurrentPage(page)}
       />
     </div>
   )

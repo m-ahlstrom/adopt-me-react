@@ -8,11 +8,15 @@ import Modal from './Modal'
 import AdoptedPetContext from '../contexts/AdoptedPetContext'
 
 const Details = () => {
+  const { id } = useParams()
+  if (!id) {
+    throw new Error('No ID found, but is required.')
+  }
+
   const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate()
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext)
-  const { id } = useParams()
   const results = useQuery(['details', id], fetchPet)
 
   if (results.isLoading) {
@@ -23,7 +27,10 @@ const Details = () => {
     )
   }
 
-  const pet = results.data.pets[0]
+  const pet = results?.data?.pets[0]
+  if (!pet) {
+    throw new Error('No pets found.')
+  }
 
   return (
     <div className="my-6 mx-auto w-11/12 rounded bg-background-color p-10 shadow-lg dark:bg-zinc-700 dark:text-white">
@@ -66,10 +73,10 @@ const Details = () => {
   )
 }
 
-function DetailsErrorBoundary(props) {
+function DetailsErrorBoundary() {
   return (
     <ErrorBoundary>
-      <Details {...props} />
+      <Details />
     </ErrorBoundary>
   )
 }

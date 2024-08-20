@@ -1,7 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
+// eslint-disable-next-line import/named
+import { QueryStatus, useQuery } from '@tanstack/react-query'
 import fetchBreedList from '../utils/fetchBreedList'
+import { Animal } from '../APIResponseTypes'
 
-export default function useBreedList(animal) {
+export default function useBreedList(animal: Animal) {
   const results = useQuery(['breeds', animal], fetchBreedList)
 
   //   const [breedList, setBreedList] = useState([]);
@@ -31,5 +33,8 @@ export default function useBreedList(animal) {
   //     }
   //   }, [animal]);
 
-  return [results?.data?.breeds ?? [], results.status]
+  return [results?.data?.breeds ?? [], results.status] as [
+    string[],
+    QueryStatus,
+  ]
 }

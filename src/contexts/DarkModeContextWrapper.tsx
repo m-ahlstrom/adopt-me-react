@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import DarkModeContext from './DarkModeContext'
+import { useState, useEffect, ReactElement } from 'react'
+import { NewMode, DarkModeContext } from './DarkModeContext'
 
-const DarkModeContextWrapper = ({ children }) => {
+const DarkModeContextWrapper = ({ children }: { children: ReactElement }) => {
   const [mode, setMode] = useState(localStorage.getItem('mode') || 'light')
 
-  const changeCurrentMode = (newMode = 'light' | 'dark') => {
+  const changeCurrentMode = (newMode: NewMode) => {
     setMode(newMode)
     localStorage.setItem('mode', newMode)
   }
