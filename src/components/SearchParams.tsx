@@ -1,30 +1,30 @@
-import {
-  useState,
-  useContext,
-  useDeferredValue,
-  useMemo,
-  useTransition,
-} from 'react'
+import { useState, useDeferredValue, useMemo, useTransition } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useSelector, useDispatch } from 'react-redux'
+import { all } from '../redux/slices/searchParamsSlice'
 import useBreedList from '../hooks/useBreedList'
 import Results from './Results'
 import fetchSearch from '../utils/fetchSearch'
-import AdoptedPetContext from '../contexts/AdoptedPetContext'
 import { Animal } from '../APIResponseTypes'
+import { IRootState } from '../redux/store/store'
 const ANIMALS: Animal[] = ['bird', 'cat', 'dog', 'rabbit', 'reptile']
 
 const SearchParams = () => {
-  const [requestParams, setRequestParams] = useState({
-    location: '',
-    animal: '' as Animal,
-    breed: '',
-  })
+  //  const [requestParams, setRequestParams] = useState({
+  //    location: '',
+  //    animal: '' as Animal,
+  //    breed: '',
+  //  })
+  const adoptedPet = useSelector((state: IRootState) => state.adoptedPet.value)
+  const searchParams = useSelector(
+    (state: IRootState) => state.searchParams.value,
+  )
   const [animal, setAnimal] = useState('' as Animal)
   const [breeds] = useBreedList(animal)
-  const [adoptedPet] = useContext(AdoptedPetContext)
   const [isPending, startTransition] = useTransition()
+  const dispatch = useDispatch()
 
-  const results = useQuery(['search', requestParams], fetchSearch)
+  const results = useQuery(['search', searchParams], fetchSearch)
   const pets = results?.data?.pets ?? []
 
   const deferredPets = useDeferredValue(pets)
@@ -47,7 +47,7 @@ const SearchParams = () => {
             location: formData.get('location')?.toString() ?? '',
           }
           startTransition(() => {
-            setRequestParams(obj)
+            dispatch(all(obj))
           })
         }}
       >
