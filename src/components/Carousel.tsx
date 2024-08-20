@@ -32,6 +32,7 @@ class Carousel extends Component<IProps> {
       <div className="mt-2 flex h-96 items-center justify-around">
         <img
           className="max-h-80 max-w-[45%] lg:max-h-96"
+          data-testId="hero"
           src={images[active]}
           alt="animal hero"
         />
@@ -41,6 +42,7 @@ class Carousel extends Component<IProps> {
             <img
               onClick={this.handleIndexClick}
               data-index={index}
+              data-testId={`thumbnail${index}`}
               key={photo}
               src={photo}
               className={

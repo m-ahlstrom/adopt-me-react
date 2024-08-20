@@ -14,7 +14,7 @@ const Pet = (props: Iprops) => {
   const { name, animal, breed, images, location, id } = props
 
   let hero = 'https://pets-images.dev-apis.com/pets/none.jpg'
-  if (images.length) {
+  if (images && images.length) {
     hero = images[0]
   }
 
@@ -24,7 +24,7 @@ const Pet = (props: Iprops) => {
       className="mx-0 block h-28 w-full overflow-hidden border-b-2 border-solid"
     >
       <div className="float-left mx-5 h-24 w-24 [clip-path:circle(50%)]">
-        <img src={hero} className="w-24" alt={name} />
+        <img data-testid="thumbnail" src={hero} className="w-24" alt={name} />
       </div>
       <div className="w-4/5 flex-col justify-around">
         <h1 className="text-ellipsis whitespace-nowrap text-2xl font-normal">
