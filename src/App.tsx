@@ -35,11 +35,13 @@ const App = () => {
             }
           >
             <Provider store={store}>
-              <Navbar />
-              <Routes>
-                <Route path="/details/:id" element={<Details />} />
-                <Route path="/" element={<SearchParams />} />
-              </Routes>
+              <div className="min-h-[88.8vh]">
+                <Navbar />
+                <Routes>
+                  <Route path="/details/:id" element={<Details />} />
+                  <Route path="/" element={<SearchParams />} />
+                </Routes>
+              </div>
             </Provider>
             <Footer />
           </Suspense>

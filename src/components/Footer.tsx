@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="mx-auto flex w-full content-center items-center justify-center bg-background-color p-10 dark:bg-zinc-700 dark:text-white">
+    <footer className="mx-auto flex min-h-[10vh] w-full content-center items-center justify-center bg-background-color p-10 dark:bg-zinc-700 dark:text-white">
       <div>
         2024 © mahlstrom -{' '}
         <a
